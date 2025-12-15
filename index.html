@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <img src="image_357ea3.jpg" alt="Logo Orleans Boliche" class="logo">
         
         <h1>💲 Calculadora de Pedidos - Orleans Boliche</h1>
-        <p>Insira a quantidade de combos e itens individuais para calcular o total da conta.</p>
+        <p class="description">Insira a quantidade de combos e itens individuais para calcular o total da conta e gere seu log diário.</p>
 
         <div id="items-list">
             
@@ -24,24 +24,24 @@
             
             <div class="item-input">
                 <label for="combo1">Combo Grande (Mega Strike - $1000):</label>
-                <input type="number" id="combo1" min="0" value="0" data-price="1000">
+                <input type="number" id="combo1" min="0" value="0" data-price="1000" data-name="Combo Mega Strike">
             </div>
 
             <div class="item-input">
                 <label for="combo2">Combo Médio (Major Strike - $700):</label>
-                <input type="number" id="combo2" min="0" value="0" data-price="700">
+                <input type="number" id="combo2" min="0" value="0" data-price="700" data-name="Combo Major Strike">
             </div>
 
             <div class="item-input">
                 <label for="combo3">Combo Pequeno (Mini Strike - $250):</label>
-                <input type="number" id="combo3" min="0" value="0" data-price="250">
+                <input type="number" id="combo3" min="0" value="0" data-price="250" data-name="Combo Mini Strike">
             </div>
 
             <h2 class="section-title">🍟 Itens Individuais</h2>
             
             <div class="item-input">
-                <label for="item_individual">Qualquer Comida/Bebida Individual ($80):</label>
-                <input type="number" id="item_individual" min="0" value="0" data-price="80">
+                <label for="item_individual">Comida/Bebida Individual ($80):</label>
+                <input type="number" id="item_individual" min="0" value="0" data-price="80" data-name="Item Individual">
             </div>
 
         </div>
@@ -54,8 +54,18 @@
         <div class="result-box">
             <h2>💰 Total do Pedido:</h2>
             <p id="total-result">$0</p>
-            <small>*Preços válidos para o GTA RP.</small>
         </div>
+        
+        <div class="log-section">
+            <button onclick="generateLogReport()" class="log-button">Gerar Log Diário</button>
+            <h3>Histórico de Vendas (Log):</h3>
+            <textarea id="daily-log" readonly rows="6" placeholder="Logs de vendas aparecerão aqui."></textarea>
+            <button onclick="copyLog()" class="copy-button">Copiar Log para Fechamento</button>
+            <button onclick="clearDailyLog()" class="clear-log-button">Limpar Log do Dia</button>
+            
+            <small>*Clique em Calcular Total para registrar a venda no Log.</small>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
