@@ -3,7 +3,7 @@ body {
     font-family: 'Roboto Mono', monospace;
     background-color: #121212; 
     /* Fundo de boliche noturno */
-    background-image: url('https://i.imgur.com/g0t6x3p.jpeg'); 
+    background-image: url('boliche-fundo.jpg'); 
     background-size: cover;
     background-position: center;
     display: flex;
@@ -184,3 +184,4 @@ button:active {
     box-shadow: 0 4px #333;
     color: #f0f0f0;
 }
+
