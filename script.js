@@ -2,6 +2,48 @@
 let salesHistory = [];
 
 /**
+ * Função principal que calcula o total do pedido e ATUALIZA O DISPLAY.
+ * IMPORTANTE: Esta função NÃO registra a venda no log.
+ */
+function calculateTotal() {
+    let total = 0;
+    
+    const itemInputs = document.querySelectorAll('#items-list input[type="number"]');
+
+    itemInputs.forEach(input => {
+        const quantity = Math.max(0, parseInt(input.value) || 0); 
+        const price = parseFloat(input.getAttribute('data-price'));
+
+        if (price > 0) {
+            total += quantity * price;
+        }
+    });
+
+    const formattedTotal = `$${total.toLocaleString('pt-BR')}`;
+
+    document.getElementById('total-result').textContent = formattedTotal;
+    
+    return total; // Retorna o valor calculado
+}
+
+/**
+ * Funçao chamada pelo clique do botão "Calcular Total".
+ * Esta função CALCULA, EXIBE e REGISTRA A VENDA.
+ */
+function handleCalculateClick() {
+    const total = calculateTotal();
+    
+    // *CHAMADA CRUCIAL: REGISTRA A VENDA APENAS AQUI*
+    if (total > 0) {
+        recordSale(total);
+        alert(`Pedido registrado no log! Total: $${total.toLocaleString('pt-BR')}`);
+    } else {
+        alert("Nenhum item selecionado para registrar a venda.");
+    }
+}
+
+
+/**
  * Adiciona o pedido atual ao histórico de vendas (log).
  */
 function recordSale(total) {
@@ -110,33 +152,6 @@ Total de Pedidos Atendidos: ${salesHistory.length}
 }
 
 /**
- * Função principal que calcula o total do pedido e REGISTRA A VENDA.
- */
-function calculateTotal() {
-    let total = 0;
-    
-    const itemInputs = document.querySelectorAll('#items-list input[type="number"]');
-
-    itemInputs.forEach(input => {
-        const quantity = Math.max(0, parseInt(input.value) || 0); 
-        const price = parseFloat(input.getAttribute('data-price'));
-
-        if (price > 0) {
-            total += quantity * price;
-        }
-    });
-
-    const formattedTotal = `$${total.toLocaleString('pt-BR')}`;
-
-    document.getElementById('total-result').textContent = formattedTotal;
-    
-    // *CHAMADA CRUCIAL: REGISTRA A VENDA DEPOIS DE CALCULAR*
-    if (total > 0) {
-        recordSale(total);
-    }
-}
-
-/**
  * Função para limpar todos os campos de quantidade e resetar o total (APENAS UM PEDIDO).
  */
 function clearFields() {
@@ -173,12 +188,13 @@ function clearDailyLog() {
 }
 
 
-// Evento que carrega a função de cálculo automaticamente.
+// Evento que carrega a função de cálculo automaticamente (apenas cálculo, não registro).
 document.addEventListener('DOMContentLoaded', () => {
     const itemInputs = document.querySelectorAll('#items-list input[type="number"]');
     
+    // O cálculo é feito ao digitar, mas o registro da venda só é feito no clique.
     itemInputs.forEach(input => {
-        input.addEventListener('input', calculateTotal); // O cálculo é feito ao digitar, mas a venda só é registrada no clique
+        input.addEventListener('input', calculateTotal); 
         input.addEventListener('change', calculateTotal);
     });
     
