@@ -106,6 +106,8 @@ button {
     font-weight: 700;
     box-shadow: 0 4px #008f9c;
     transition: all 0.1s;
+    /* Remove a margem que tinha antes para usar o group */
+    margin-top: 0; 
 }
 
 .clear-button {
