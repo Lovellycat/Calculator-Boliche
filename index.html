@@ -47,7 +47,7 @@
         </div>
 
         <div class="button-group">
-            <button onclick="calculateTotal()">Calcular Total</button>
+            <button onclick="handleCalculateClick()">Calcular Total</button>
             <button onclick="clearFields()" class="clear-button">Limpar Pedido</button>
         </div>
 
@@ -59,11 +59,11 @@
         <div class="log-section">
             <button onclick="generateLogReport()" class="log-button">Gerar Log Diário</button>
             <h3>Histórico de Vendas (Log):</h3>
-            <textarea id="daily-log" readonly rows="6" placeholder="Logs de vendas aparecerão aqui."></textarea>
+            <textarea id="daily-log" readonly rows="6" placeholder="Logs de vendas aparecerão aqui. Clique em 'Calcular Total' para registrar."></textarea>
             <button onclick="copyLog()" class="copy-button">Copiar Log para Fechamento</button>
             <button onclick="clearDailyLog()" class="clear-log-button">Limpar Log do Dia</button>
             
-            <small>*Clique em Calcular Total para registrar a venda no Log.</small>
+            <small>*O Log registra apenas quando você clica em "Calcular Total".</small>
         </div>
 
     </div>
