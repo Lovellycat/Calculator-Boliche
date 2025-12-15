@@ -1,0 +1,147 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a; /* Fundo escuro */
+    background-image: url('https://i.imgur.com/w4JbJ0k.jpeg'); /* Pista de Boliche - Imagem de Exemplo */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.calculator-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo claro com transparência */
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #000000;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    color: #E30B5C; /* Cor rosa/vermelha chamativa */
+    border-bottom: 2px solid #E30B5C;
+    padding-bottom: 5px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.item-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+label {
+    font-weight: 400;
+    color: #333;
+    text-align: left;
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+input[type="number"] {
+    width: 70px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 600;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* ESTILOS PARA OS BOTÕES (Calcular e Limpar) */
+.button-group {
+    display: flex;
+    gap: 15px; /* Espaço entre os botões */
+    justify-content: center;
+    margin-top: 25px;
+}
+
+button {
+    background-color: #007bff; /* Azul vibrante (Botão Calcular) */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    box-shadow: 0 4px #0056b3;
+    transition: all 0.1s;
+    /* Remove a margem que tinha antes para usar o group */
+    margin-top: 0; 
+}
+
+/* Estilo específico para o botão Limpar */
+.clear-button {
+    background-color: #dc3545; /* Vermelho para a função limpar */
+    box-shadow: 0 4px #b82d3b;
+}
+
+.clear-button:hover {
+    background-color: #c82333;
+}
+
+button:active {
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.result-box {
+    margin-top: 35px;
+    padding: 20px;
+    border: 3px solid #007bff;
+    border-radius: 10px;
+    background-color: #e6f7ff;
+}
+
+#total-result {
+    font-size: 2.5em;
+    color: #E30B5C; 
+    font-weight: 700;
+    display: block;
+}
+
+small {
+    display: block;
+    margin-top: 10px;
+    color: #999;
+    font-size: 0.8em;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
